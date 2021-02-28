@@ -1,0 +1,97 @@
+
+.themoviedb-item {
+    width: 405px;
+    margin: 20px 10px;
+    border: 3px solid rgba(202, 7, 189, 0.87);
+    border-radius: 5%;
+    overflow: hidden;
+    display: inline-block;
+    text-align: left;
+    color: white;
+
+    .overview-section {
+        border-bottom: 1px solid rgba(202, 7, 189, 0.87);
+        height: 340px;
+        padding: 5px;
+        cursor: pointer;
+
+        img {
+            width: 185px;
+            height: 278px;
+            float: left;
+            padding-right: 8px;
+        }
+
+        .overview {
+            font-size: 16px;
+            line-height: 20px;
+            font-family: Helvetica;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    
+    }
+
+    
+
+    .text-section {
+        width: 100%;
+        min-height: 40px;
+        font-size: 20px;
+        line-height: 39px;
+        border-bottom: 1px solid rgba(202, 7, 189, 0.87);
+        background-color: rgba(22, 4, 20, 0.1);
+
+        
+        .title {
+            max-width: 97%;
+            display: block;
+            margin-left: 5px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        &.other-details {
+            border-bottom: none;
+            
+            .release-date {
+                float: left;
+                margin-left: 5px; 
+            }
+
+            .like {
+                float: right;
+                margin-right: 5px; 
+                cursor: pointer;
+                color: white;
+                padding-top: 8px;
+
+                &.is-like {
+                    color: #0c75dd;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .themoviedb-item {
+        text-align: center;
+        height: auto;
+        margin: 20px 0;
+        box-sizing: border-box;
+        flex: 1 1 100%;
+
+        .title-section {
+            height: auto;
+
+            .title {
+                float: none;
+                display: block;
+            }
+        }
+    }
+}
+
