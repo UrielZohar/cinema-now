@@ -1,2 +1,13 @@
-<h1>Cinema Now</h1> 
-<router-outlet></router-outlet>
+<div class="app-component">
+  <img src="/assets/cinemaNowLogo.jpg" /> 
+  <nav>
+    <a routerLink="/search" routerLinkActive="active">Search</a>
+    <a routerLink="/local" routerLinkActive="active">Local Movies</a>
+    <a routerLink="/shows" routerLinkActive="active">Shows</a>
+    <a routerLink="/halls" routerLinkActive="active">Halls</a>
+  </nav>
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
+  <app-spinner></app-spinner>
+</div>

@@ -1,1 +1,18 @@
-<p>search-movie works!</p>
+<div class="search-movie">
+  <div class="form__group field">
+    <input 
+      type="text"
+      class="form__field"
+      [(ngModel)]="searchKey"
+      #searchInput
+      placeholder="Movie Title"
+      name="movieTitle"
+      [readonly]="isLoading"
+      id='movieTitle' />
+    <label 
+      for="movieTitle" 
+      class="form__label">
+      Movie Title
+    </label>
+  </div>
+</div>
