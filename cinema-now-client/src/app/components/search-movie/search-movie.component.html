@@ -15,4 +15,11 @@
       Movie Title
     </label>
   </div>
+  <div class="movies-list">
+    <app-movie-item
+      *ngFor="let movie of movies"
+      [movieDetails]="movie"
+    >
+    </app-movie-item>
+  </div>
 </div>

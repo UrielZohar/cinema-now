@@ -1,22 +1,15 @@
 <div class="themoviedb-item">
-    <div class="text-section">
-        <div class="title">{{movieDetails.title}}</div>
-    </div>
-    <div 
-        class="overview-section"
-        (click)="openMoivePage(movieDetails)">
-        <img src="{{'https://image.tmdb.org/t/p/w500/' + movieDetails.poster_path}}">
-        <div class="overview">
-            {{ (movieDetails.overview.length> 458)? (movieDetails.overview | slice:0:458) + '..' :(movieDetails.overview) }}
-        </div>
-    </div>
-    <div class="text-section other-details">
-        <div class="release-date">{{movieDetails.release_date}}</div>
-        <div 
-            class="like"
-            (click)="toggleMovieToLikeList(movieDetails.id, movieDetails.isLike, movieDetails)"
-            [ngClass]="{'is-like': movieDetails.isLike}">
-            <i class="material-icons">thumb_up</i>
-        </div>
-    </div>
+	<div class="text-section">
+		<div class="title">{{movieDetails.title}}</div>
+	</div>
+	<div 
+		class="overview-section">
+			<img src="{{movieDetails.poster_path}}" />
+			<div class="overview">
+				{{movieDetails.overview}}
+			</div>
+	</div>
+	<div class="text-section other-details">
+		<div class="release-date">{{movieDetails.release_date}}</div>
+	</div>
 </div>

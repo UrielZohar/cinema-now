@@ -4,7 +4,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { fromEvent, interval } from 'rxjs';
 import { debounce, map, filter } from 'rxjs/operators';
 
-import { SpinnerService } from '../../services/spinner.service';
+import { HttpService } from '../../services/http.service';
 
 
 const DEBOUNCE_TIME = 1000;
@@ -22,7 +22,8 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
   searchResult: any;
   subscription : any;
   isLoading: boolean = false;
-  constructor(private spinnerService: SpinnerService) { }
+  movies: Movie[] = [];
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
     
@@ -36,14 +37,14 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
       debounce(() => interval(DEBOUNCE_TIME))
     );
     this.subscription = this.searchResult.subscribe(
-      (x: any) => {
-        console.log(x);
-        this.spinnerService.turnOnSpinner();
+      async (searchKey: any) => {
         this.isLoading = true;
-        setTimeout(() => {
-          this.spinnerService.turnOffSpinner();
-          this.isLoading = false;
-        }, 2000);
+        const res = await this.httpService.searchMoviesByTitle(searchKey, 1, true);
+        if (res) {
+          this.movies = res.results;
+        }
+        this.isLoading = false;
+        
       }
     );
   }

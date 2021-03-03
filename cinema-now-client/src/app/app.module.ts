@@ -16,6 +16,7 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
 import { LocalMoviesComponent } from './components/local-movies/local-movies.component';
 import { CinemaShowsComponent } from './components/cinema-shows/cinema-shows.component';
 import { TheaterHallsComponent } from './components/theater-halls/theater-halls.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TheaterHallsComponent } from './components/theater-halls/theater-halls.
     SearchMovieComponent,
     LocalMoviesComponent,
     CinemaShowsComponent,
-    TheaterHallsComponent
+    TheaterHallsComponent,
+    MovieItemComponent
   ],
   imports: [
     BrowserModule,
