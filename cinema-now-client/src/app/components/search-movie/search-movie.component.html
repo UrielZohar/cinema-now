@@ -16,6 +16,11 @@
     </label>
   </div>
   <div 
+    class="no-results" 
+    *ngIf="isNoResults">
+    <span>No Results</span>
+  </div>
+  <div 
     class="movies-list"
     infiniteScroll
     [infiniteScrollDistance]="1"
@@ -26,6 +31,14 @@
       [movieDetails]="movie"
       (clickOnAction)="saveToLocalMovies($event)"
     >
+    <i
+      action
+      [title]="movie.isSavedInLocal ? 'Saved' : 'Save Locally'" 
+      class="material-icons"
+      (click)="!movie.isSavedInLocal && saveToLocalMovies(movie.id)"
+      [ngClass]="{'saved-in-local': movie.isSavedInLocal}">
+      save_alt
+    </i>
     </app-movie-item>
   </div>
 </div>

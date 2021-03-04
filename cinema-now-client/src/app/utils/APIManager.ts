@@ -9,6 +9,10 @@ class APIManager {
     static saveMovieInLocal() {
       return `${APIManager.ROOT}/local/save`;
     }
+    
+    static getLocalMoviesMap() {
+      return `${APIManager.ROOT}/local/movies/map`;
+    }
 
   }
   

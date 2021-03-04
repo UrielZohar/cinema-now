@@ -73,7 +73,7 @@
 		}
 	}
 
-	.save-in-local {
+	.actions ::ng-deep  {
 		cursor: pointer;
 		i {
 			line-height: 39px;

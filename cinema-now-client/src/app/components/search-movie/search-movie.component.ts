@@ -4,7 +4,10 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { fromEvent, interval } from 'rxjs';
 import { debounce, map, filter } from 'rxjs/operators';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { HttpService } from '../../services/http.service';
+import { LocalMoviesService } from '../../services/local-movies.service';
 
 
 const DEBOUNCE_TIME = 1000;
@@ -18,6 +21,7 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('searchInput') input!: ElementRef;
 
+  isNoResults: boolean = false;
   searchKey: string = "";
   searchResult: any;
   subscription : any;
@@ -25,7 +29,11 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
   movies: Movie[] = [];
   totalPages: number = 0;
   currentPage: number = 0;
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    private snackBar: MatSnackBar,
+    private localMoviesService: LocalMoviesService
+  ) { }
 
   ngOnInit(): void {
     
@@ -35,21 +43,33 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
     const valueChanges = fromEvent(this.input.nativeElement, 'keyup')
     this.searchResult = valueChanges.pipe(
       map((e: any) => e.target.value),
-      filter(() => !this.isLoading ),    
+      filter((val) => !this.isLoading ),    
       debounce(() => interval(DEBOUNCE_TIME))
     );
     this.subscription = this.searchResult.subscribe(
       async (searchKey: any) => {
+        this.isNoResults = false;
+        if (!searchKey) {
+          this.currentPage = 1;
+          this.totalPages = 1;
+          this.movies = [];
+          return;
+        }
         this.isLoading = true;
         const res = await this.httpService.searchMoviesByTitle(searchKey, 1, true);
-        this.currentPage = 1;
-        this.totalPages = res.total_pages;
-
-        if (res) {
+        if (!res) {
+          this.isLoading = false;
+          return;
+        } else {
+          this.currentPage = 1;
+          this.totalPages = res.total_pages;
+          this.isLoading = false;
           this.movies = res.results;
+          if (this.movies.length === 0) {
+            this.isNoResults = true;
+          }
+          this.markSavedMovies();
         }
-        this.isLoading = false;
-        
       }
     );
   }
@@ -73,6 +93,12 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
         ...this.movies[idx],
         isSavedInLocal: true
       }
+      this.snackBar.open("Succeeded", "Saved Locally", {
+        duration: 800,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+      this.localMoviesService.addToLocalMoviesMap(id);
     }
   }
 
@@ -83,10 +109,17 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
       this.totalPages = res.total_pages;
       if (res) {
         this.movies.push(...res.results);
+        this.markSavedMovies();
       }
       this.isLoading = false;
     }
-        
   }
-
+  
+  markSavedMovies() {
+    this.movies.forEach((movie: Movie) => {
+      if (this.localMoviesService.isMovieExist(movie.id)) {
+        movie.isSavedInLocal = true;
+      }
+    })
+  }
 }

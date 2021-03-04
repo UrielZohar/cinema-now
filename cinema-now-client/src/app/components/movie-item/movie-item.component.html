@@ -18,14 +18,8 @@
 				{{movieDetails.release_date}}
 			</span>
 		</div>
-		<div class="save-in-local float-right">
-			<i
-				[title]="movieDetails.isSavedInLocal ? 'Saved' : 'Save Locally'" 
-				class="material-icons"
-				(click)="!movieDetails.isSavedInLocal && triggerClickOnAction(movieDetails.id)"
-				[ngClass]="{'saved-in-local': movieDetails.isSavedInLocal}">
-				save_alt
-			</i>
+		<div class="actions float-right">
+			<ng-content select="[action]"></ng-content>
 		</div>
 	</div>
 </div>

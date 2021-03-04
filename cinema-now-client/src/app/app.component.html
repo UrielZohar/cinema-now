@@ -6,7 +6,9 @@
     <a routerLink="/shows" routerLinkActive="active">Shows</a>
     <a routerLink="/halls" routerLinkActive="active">Halls</a>
   </nav>
-  <div class="router-outlet">
+  <div 
+    class="router-outlet"
+    *ngIf="localMoviesService.isReady">
     <router-outlet></router-outlet>
   </div>
   <app-spinner></app-spinner>

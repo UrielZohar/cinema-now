@@ -30,4 +30,15 @@ router.post('/save', (req, res) => {
   })
 });
 
+/* GET all local movies ids in map  */ 
+router.get('/movies/map', (req, res, next) => {
+  Movie.find({}).exec().then((allLocalMovies) => {
+    var objectMap = {};
+    allLocalMovies.forEach(item => {
+      objectMap[item.id] = true;
+    });
+    res.send(objectMap);
+  }, () => res.status(500).send('Something broke') )
+});
+
 module.exports = router;

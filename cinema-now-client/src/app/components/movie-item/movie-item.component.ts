@@ -21,8 +21,4 @@ export class MovieItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  triggerClickOnAction(id: string) {
-    this.clickOnAction.emit(id);
-  }
 }

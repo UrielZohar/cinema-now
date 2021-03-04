@@ -47,8 +47,7 @@ export class HttpService {
 
       default: {
         return null;
-      }
-      
+      } 
     }
   }
 
@@ -58,5 +57,10 @@ export class HttpService {
 
   saveMovieInLocal(movie: Movie) {
     return this.httpRequest(APIManager.saveMovieInLocal(), "POST", true, { movie });  
+  }
+  
+  getLocalMoviesMap() {
+    return this.httpRequest(APIManager.getLocalMoviesMap(), "GET", true);  
+
   }
 }
