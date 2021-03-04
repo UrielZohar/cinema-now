@@ -15,10 +15,16 @@
       Movie Title
     </label>
   </div>
-  <div class="movies-list">
+  <div 
+    class="movies-list"
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="loadNextPage()">
     <app-movie-item
-      *ngFor="let movie of movies"
+      *ngFor="let movie of movies; trackBy: trackbyFunc; let idx = index"
       [movieDetails]="movie"
+      (clickOnAction)="saveToLocalMovies($event)"
     >
     </app-movie-item>
   </div>

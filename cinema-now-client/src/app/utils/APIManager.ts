@@ -6,6 +6,10 @@ class APIManager {
       return `${APIManager.ROOT}/movies?title=${title}&page=${pageNumber}`;
     }
 
+    static saveMovieInLocal() {
+      return `${APIManager.ROOT}/local/save`;
+    }
+
   }
   
   export default APIManager;

@@ -77,6 +77,12 @@
 		cursor: pointer;
 		i {
 			line-height: 39px;
+
+			&.saved-in-local {
+				color: rgb(114, 75, 241);
+				font-weight: bold;
+				cursor: default;
+			}
 		}
 	}
 }

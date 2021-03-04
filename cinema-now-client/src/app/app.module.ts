@@ -12,6 +12,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { LocalMoviesComponent } from './components/local-movies/local-movies.component';
@@ -37,7 +40,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

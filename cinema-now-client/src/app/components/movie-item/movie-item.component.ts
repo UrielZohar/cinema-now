@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { 
+  Component, 
+  OnInit, 
+  Input, 
+  Output, 
+  EventEmitter 
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -9,9 +15,14 @@ import { MatDialog } from '@angular/material/dialog';
 export class MovieItemComponent implements OnInit {
 
   @Input() movieDetails: any;
+  @Output('clickOnAction') clickOnAction = new EventEmitter<string>(); 
 
   constructor(public _dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  triggerClickOnAction(id: string) {
+    this.clickOnAction.emit(id);
   }
 }

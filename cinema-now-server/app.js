@@ -3,9 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var moviesRouter = require('./routes/movies');
+var localRouter = require('./routes/local');
+
+var initDB = require('./DAL/initDB');
+
+initDB();
 
 var app = express();
 
@@ -20,6 +27,12 @@ app.use(function(req, res, next) {
   next()
 });
 
+app.use( bodyParser.json() ); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+  extended: true
+}));
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
+app.use('/local', localRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

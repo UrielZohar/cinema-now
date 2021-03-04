@@ -2,5 +2,7 @@ interface Movie {
   id: string,
   title: string,
   poster_path: string,
-  overview: string
+  overview: string,
+  release_date: string,
+  isSavedInLocal: boolean
 }
