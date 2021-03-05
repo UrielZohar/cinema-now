@@ -33,4 +33,8 @@ export class LocalMoviesService {
   isMovieExist(id: string) {
     return !!this.localMoviesMap[id];
   }
+
+  deleteLocalMovie(id: string) {
+    delete this.localMoviesMap[id];
+  }
 }

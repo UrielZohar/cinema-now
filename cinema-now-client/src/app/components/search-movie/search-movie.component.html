@@ -29,7 +29,6 @@
     <app-movie-item
       *ngFor="let movie of movies; trackBy: trackbyFunc; let idx = index"
       [movieDetails]="movie"
-      (clickOnAction)="saveToLocalMovies($event)"
     >
     <i
       action

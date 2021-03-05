@@ -12,6 +12,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatListModule} from '@angular/material/list';
+
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -43,6 +45,7 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     MatDialogModule,
     MatIconModule,
     MatSnackBarModule,
+    MatListModule,
     InfiniteScrollModule,
   ],
   providers: [],

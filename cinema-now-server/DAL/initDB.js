@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
+const DAL = require('./DAL');
+const mongoose = DAL.getConnection();
 
 
 const initDB = () => {
   mongoose.connect('mongodb://localhost:27017/mean-docker', { useNewUrlParser: true })
   .then(res => {
     console.log('Connection succeeded');
-    const hallSchema = new mongoose.Schema({
-      name: String
-    });
     // create mongoose model
-    const Halls = mongoose.model('Halls', hallSchema);
+    const Halls = DAL.getHallsModel();
     //
     Halls.find().exec().then((halls) => {
       if (halls.length == 0) {

@@ -1,1 +1,12 @@
-<p>local-movies works!</p>
+<app-movie-item
+  *ngFor="let movie of movies; trackBy: trackbyFunc; let idx = index"
+  [movieDetails]="movie"
+>
+  <i
+    action
+    title="Delete From Local" 
+    class="material-icons"
+    (click)="deleteLocalMovie(movie.id, movie.title)">
+    delete
+  </i>
+</app-movie-item>

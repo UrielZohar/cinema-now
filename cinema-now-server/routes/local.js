@@ -1,21 +1,9 @@
 var express = require('express');
 var axios = require('axios');
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/mean-docker', { useNewUrlParser: true });
-
+var DAL = require('../DAL/DAL');
 
 var router = express.Router();
-const movieSchema = new mongoose.Schema({
-  id: String,
-  title: String,
-  poster_path: String,
-  overview: String,
-  release_date: String
-});
-
-const Movie = mongoose.model('Movie', movieSchema);
-
+const Movie = DAL.getMovieModel();
 
 /* GET users listing. */
 router.post('/save', (req, res) => {
@@ -39,6 +27,25 @@ router.get('/movies/map', (req, res, next) => {
     });
     res.send(objectMap);
   }, () => res.status(500).send('Something broke') )
+});
+
+/* GET all local movies */ 
+router.get('/movies', (req, res, next) => {
+  Movie.find({}).exec().then((allLocalMovies) => {
+    res.send(allLocalMovies);
+  }, () => res.status(500).send('Something broke') )
+});
+
+/* GET delete */
+router.get('/:id/delete', (req, res) => {
+  const { id } = req.params;
+  Movie.deleteOne({ id }).then((result) => {
+    if (result.deletedCount) {
+      res.send("deleted");
+    } else {
+      res.status(500).send('Something broke');
+    }
+  }, () => res.status(500).send('Something broke'));
 });
 
 module.exports = router;

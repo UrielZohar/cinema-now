@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-theater-halls',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TheaterHallsComponent implements OnInit {
 
-  constructor() { }
+  halls: any = [];
+  constructor(private httpService: HttpService) {
+    this.httpService.getHalls()
+      ?.then(res => {
+        this.halls = res;
+      });
+   }
 
   ngOnInit(): void {
   }

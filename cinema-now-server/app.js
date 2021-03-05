@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var moviesRouter = require('./routes/movies');
 var localRouter = require('./routes/local');
+var hallsRouter = require('./routes/halls');
 
 var initDB = require('./DAL/initDB');
 
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
 app.use('/local', localRouter);
+app.use('/halls', hallsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

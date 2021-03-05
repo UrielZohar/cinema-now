@@ -1,27 +1,35 @@
-// getting-started.js
 const mongoose = require('mongoose');
-mongoose.connect(
-  'mongodb://localhost/test', 
-  {useNewUrlParser: true, useUnifiedTopology: true}
-);
+mongoose.connect('mongodb://localhost:27017/mean-docker', { useNewUrlParser: true });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});
-
-const kittySchema = new mongoose.Schema({
+const hallSchema = new mongoose.Schema({
   name: String
 });
-const Kitten = mongoose.model('Kitten', kittySchema);
-const fluffy = new Kitten({ name: 'fluffy' });
-console.log(silence.name); // 'Silence'
+// create mongoose model
+const Halls = mongoose.model('Halls', hallSchema);
 
-const dbActions = {
-  saveKitty: () => {
-    
+
+const movieSchema = new mongoose.Schema({
+  id: String,
+  title: String,
+  poster_path: String,
+  overview: String,
+  release_date: String
+});
+
+const Movie = mongoose.model('Movie', movieSchema);
+
+
+class DBActions {
+  static getConnection() {
+    return mongoose;
+  }
+
+  static getHallsModel() {
+    return Halls;
+  }
+  
+  static getMovieModel() {
+    return Movie;
   }
 }
-
-module.exports = dbActions;
+module.exports = DBActions;

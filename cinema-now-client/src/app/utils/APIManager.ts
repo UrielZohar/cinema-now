@@ -14,6 +14,18 @@ class APIManager {
       return `${APIManager.ROOT}/local/movies/map`;
     }
 
+    static getLocalMovies() {
+      return `${APIManager.ROOT}/local/movies`;
+    }
+
+    static getHalls() {
+      return `${APIManager.ROOT}/halls`;
+    }
+
+    static deleteLocalMovie(id: string) {
+      return `${APIManager.ROOT}/local/${id}/delete`;
+    }
+
   }
   
   export default APIManager;

@@ -61,6 +61,17 @@ export class HttpService {
   
   getLocalMoviesMap() {
     return this.httpRequest(APIManager.getLocalMoviesMap(), "GET", true);  
+  }
 
+  getLocalMovies() {
+    return this.httpRequest(APIManager.getLocalMovies(), "GET", true);  
+  }
+  
+  getHalls() {
+    return this.httpRequest(APIManager.getHalls(), "GET", true);  
+  }
+  
+  deleteLocalMovie(id: string) {
+    return this.httpRequest(APIManager.deleteLocalMovie(id), "GET", true);  
   }
 }
