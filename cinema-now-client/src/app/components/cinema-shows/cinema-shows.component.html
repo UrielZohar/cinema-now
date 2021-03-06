@@ -1,1 +1,30 @@
-<p>cinema-shows works!</p>
+<table 
+  mat-table 
+  [dataSource]="dataSource" 
+  matSort 
+  class="shows-table">
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM/yyyy'}} </td>
+  </ng-container>
+  <!-- Movie Column -->
+  <ng-container matColumnDef="movieId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Movie </th>
+    <td mat-cell *matCellDef="let element"> {{element.movieId}} </td>
+  </ng-container>
+  <!-- Hall Column -->
+  <ng-container matColumnDef="hallId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Hall </th>
+    <td mat-cell *matCellDef="let element"> {{element.hallId}} </td>
+  </ng-container>
+  <!-- Time Column -->
+  <ng-container matColumnDef="timeId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.timeId}} </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

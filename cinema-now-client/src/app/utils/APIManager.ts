@@ -30,6 +30,10 @@ class APIManager {
       return `${APIManager.ROOT}/shows/save`;
     }
 
+    static getShows() {
+      return `${APIManager.ROOT}/shows`;
+    }
+
   }
   
   export default APIManager;

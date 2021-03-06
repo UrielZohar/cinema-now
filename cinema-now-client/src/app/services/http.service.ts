@@ -26,7 +26,7 @@ export class HttpService {
             withSpinner && this.spinnerService.turnOffSpinner();
             console.error(err);
             window.alert("Error from server");
-            return null;
+            return Promise.reject(null);
           });
       }
 
@@ -41,12 +41,12 @@ export class HttpService {
             withSpinner && this.spinnerService.turnOffSpinner();
             console.error(err);
             window.alert("Error from server");
-            return null;
+            return Promise.reject(null);
           });
       }
 
       default: {
-        return null;
+        return Promise.reject(null);
       } 
     }
   }
@@ -77,5 +77,9 @@ export class HttpService {
 
   scheduleShow(show: Show) {
     return this.httpRequest(APIManager.scheduleShow(), "POST", true, { show });  
+  }
+
+  getShows() {
+    return this.httpRequest(APIManager.getShows(), "GET", true);  
   }
 }

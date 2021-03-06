@@ -29,7 +29,7 @@
     appearance="fill"
     class="dialog-field">
     <mat-label>Time</mat-label>
-    <mat-select>
+    <mat-select [(ngModel)]="showTimeId">
       <mat-option *ngFor="let showTime of showTimeOptions" [value]="showTime.value">
         {{showTime.viewValue}}
       </mat-option>

@@ -1,0 +1,9 @@
+.shows-table {
+  width: 100%;
+
+  ::ng-deep {
+    tr td {
+      text-align: left;
+    }
+  }
+}

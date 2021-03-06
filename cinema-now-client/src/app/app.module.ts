@@ -18,6 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -57,6 +59,8 @@ import { ScheduleShowDialogComponent } from './components/schedule-show-dialog/s
     MatNativeDateModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatSortModule,
+    MatTableModule,
     InfiniteScrollModule,
   ],
   providers: [],
