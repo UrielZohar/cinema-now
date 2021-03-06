@@ -31,6 +31,9 @@ import { CinemaShowsComponent } from './components/cinema-shows/cinema-shows.com
 import { TheaterHallsComponent } from './components/theater-halls/theater-halls.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { ScheduleShowDialogComponent } from './components/schedule-show-dialog/schedule-show-dialog.component';
+import { MoviePipe } from './pipes/movie.pipe';
+import { HallPipe } from './pipes/hall.pipe';
+import { TimePipe } from './pipes/time.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { ScheduleShowDialogComponent } from './components/schedule-show-dialog/s
     CinemaShowsComponent,
     TheaterHallsComponent,
     MovieItemComponent,
-    ScheduleShowDialogComponent
+    ScheduleShowDialogComponent,
+    MoviePipe,
+    HallPipe,
+    TimePipe
   ],
   imports: [
     BrowserModule,

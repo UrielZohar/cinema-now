@@ -1,3 +1,9 @@
+@import '../../utils/colors';
+
+.dialog-title {
+  color: $gray;
+}
+
 ::ng-deep {
   .dialog-button {
     margin-right: 5px;

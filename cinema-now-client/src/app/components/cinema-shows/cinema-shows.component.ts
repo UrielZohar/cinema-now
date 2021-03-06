@@ -14,7 +14,7 @@ export class CinemaShowsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   dataSource: any = new MatTableDataSource([]);
-  displayedColumns: string[] = ['date', 'movieId', 'hallId', 'timeId'];
+  displayedColumns: string[] = ['date', 'movieId', 'hallId', 'timeId', 'actions'];
   constructor(
     private httpService: HttpService
   ) {

@@ -1,11 +1,10 @@
+@import "../../utils/colors";
 /* 
   style from here - 
   https://codepen.io/lucasyem/pen/ZEEYKdj
 */
 $primary: #11998e;
 $secondary: #38ef7d;
-$white: #fff;
-$gray: #9b9b9b;
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -70,11 +69,28 @@ $gray: #9b9b9b;
   .field {
     margin: 0 auto;
   }
-}
+  ::ng-deep  {
+    i.action {
+      line-height: 39px;
+			cursor: pointer;
+      &:hover {
+				color: $action-icon;
+			} 
+      &.saved-in-local {
+				color: $action-icon;
+				font-weight: bold;
+				cursor: default;
+			}
+    }
+	}
 
-.no-results {
-  margin-top: 25px;
-  span {
-    font-size: 40px;
+  .no-results {
+    margin-top: 25px;
+    color: $gray;
+    span {
+      font-size: 40px;
+    }
   }
 }
+
+

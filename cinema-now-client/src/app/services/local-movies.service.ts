@@ -34,6 +34,10 @@ export class LocalMoviesService {
     return !!this.localMoviesMap[id];
   }
 
+  getMovieName(id: string) {
+    return this.localMoviesMap[id].title;
+  }
+
   deleteLocalMovie(id: string) {
     delete this.localMoviesMap[id];
   }

@@ -1,9 +1,20 @@
+@import "../../utils/colors";
+
 .shows-table {
   width: 100%;
 
   ::ng-deep {
     tr td {
       text-align: left;
+    }
+
+    i.action {
+      line-height: 39px;
+      color: $table-td;
+      cursor: pointer;
+      &:hover {
+        color: $action-icon;
+      }
     }
   }
 }

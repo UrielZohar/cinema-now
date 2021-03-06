@@ -30,14 +30,14 @@
       *ngFor="let movie of movies; trackBy: trackbyFunc; let idx = index"
       [movieDetails]="movie"
     >
-    <i
-      action
-      [title]="movie.isSavedInLocal ? 'Saved' : 'Save Locally'" 
-      class="material-icons"
-      (click)="!movie.isSavedInLocal && saveToLocalMovies(movie.id)"
-      [ngClass]="{'saved-in-local': movie.isSavedInLocal}">
-      save_alt
-    </i>
+      <i
+        action
+        [title]="movie.isSavedInLocal ? 'Saved' : 'Save Locally'" 
+        class="material-icons action"
+        (click)="!movie.isSavedInLocal && saveToLocalMovies(movie.id)"
+        [ngClass]="{'saved-in-local': movie.isSavedInLocal}">
+        save_alt
+      </i>
     </app-movie-item>
   </div>
 </div>

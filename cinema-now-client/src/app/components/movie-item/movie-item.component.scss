@@ -72,23 +72,6 @@
 			}
 		}
 	}
-
-	.actions ::ng-deep  {
-		cursor: pointer;
-		i {
-			line-height: 39px;
-
-			&:hover {
-				color: rgb(114, 75, 241);
-			} 
-
-			&.saved-in-local {
-				color: rgb(114, 75, 241);
-				font-weight: bold;
-				cursor: default;
-			}
-		}
-	}
 }
 
 @media screen and (max-width: 500px) {
