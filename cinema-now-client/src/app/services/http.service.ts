@@ -74,4 +74,8 @@ export class HttpService {
   deleteLocalMovie(id: string) {
     return this.httpRequest(APIManager.deleteLocalMovie(id), "GET", true);  
   }
+
+  scheduleShow(show: Show) {
+    return this.httpRequest(APIManager.scheduleShow(), "POST", true, { show });  
+  }
 }

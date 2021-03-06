@@ -26,6 +26,10 @@ class APIManager {
       return `${APIManager.ROOT}/local/${id}/delete`;
     }
 
+    static scheduleShow() {
+      return `${APIManager.ROOT}/shows/save`;
+    }
+
   }
   
   export default APIManager;

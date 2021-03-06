@@ -11,9 +11,13 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatListModule} from '@angular/material/list';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -24,6 +28,7 @@ import { LocalMoviesComponent } from './components/local-movies/local-movies.com
 import { CinemaShowsComponent } from './components/cinema-shows/cinema-shows.component';
 import { TheaterHallsComponent } from './components/theater-halls/theater-halls.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { ScheduleShowDialogComponent } from './components/schedule-show-dialog/schedule-show-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     LocalMoviesComponent,
     CinemaShowsComponent,
     TheaterHallsComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    ScheduleShowDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,11 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     MatIconModule,
     MatSnackBarModule,
     MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDatepickerModule,
     InfiniteScrollModule,
   ],
   providers: [],

@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Schedule show - "{{data.movieTitle}}"</h1>
+<div mat-dialog-content
+  class="dialog-content">
+  <mat-form-field 
+    appearance="fill"
+    class="dialog-field">
+    <mat-label>Hall</mat-label>
+    <mat-select
+      [(ngModel)]="hallId">
+      <mat-option *ngFor="let hall of showHallOptions" [value]="hall.value">
+        {{hall.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field
+    class="dialog-field">
+    <mat-label>Date</mat-label>
+    <input 
+      matInput 
+      [matDatepicker]="picker"
+      [(ngModel)]="showDate"
+      (dateInput)="onDateChange('input', $event)"
+      (dateChange)="onDateChange('change', $event)"
+    >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field 
+    appearance="fill"
+    class="dialog-field">
+    <mat-label>Time</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let showTime of showTimeOptions" [value]="showTime.value">
+        {{showTime.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-progress-spinner
+    *ngIf="isCheckingForTimes"
+    mode="indeterminate"
+    strokeWidth="3" 
+    [diameter]="20"
+  >
+  </mat-progress-spinner>
+</div>
+<div mat-dialog-actions>
+  <button 
+    class="dialog-button"
+    mat-button 
+    (click)="onClose()">
+    Cancel
+  </button>
+  <button 
+    class="dialog-button"
+    mat-button 
+    [mat-dialog-close]="" 
+    cdkFocusInitial
+    (click)="schedleShow()">
+    Save
+  </button>
+</div>

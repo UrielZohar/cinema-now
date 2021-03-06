@@ -9,7 +9,7 @@ import { HttpService } from './http.service';
 export class LocalMoviesService {
 
   isReady: boolean = false;
-  localMoviesMap: {[key: string]: boolean} = {};
+  localMoviesMap: {[key: string]: Movie} = {};
   constructor(private httpService: HttpService) {
     Promise.all([this.getLocalMoviesMap()])
     .then(() => {
@@ -26,8 +26,8 @@ export class LocalMoviesService {
     return Promise.reject();
   }
 
-  addToLocalMoviesMap(id: string) {
-    this.localMoviesMap[id] = true;
+  addToLocalMoviesMap(movie: Movie) {
+    this.localMoviesMap[movie.id] = movie;
   }
 
   isMovieExist(id: string) {

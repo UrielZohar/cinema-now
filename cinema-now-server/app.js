@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var moviesRouter = require('./routes/movies');
 var localRouter = require('./routes/local');
 var hallsRouter = require('./routes/halls');
+var showsRouter = require('./routes/shows');
 
 var initDB = require('./DAL/initDB');
 
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
 app.use('/local', localRouter);
 app.use('/halls', hallsRouter);
+app.use('/shows', showsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

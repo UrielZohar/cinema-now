@@ -78,6 +78,10 @@
 		i {
 			line-height: 39px;
 
+			&:hover {
+				color: rgb(114, 75, 241);
+			} 
+
 			&.saved-in-local {
 				color: rgb(114, 75, 241);
 				font-weight: bold;

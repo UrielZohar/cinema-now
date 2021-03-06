@@ -9,4 +9,11 @@
     (click)="deleteLocalMovie(movie.id, movie.title)">
     delete
   </i>
+  <i
+    action
+    title="Schedule A Show" 
+    class="material-icons"
+    (click)="openScheduleShowDialog(movie.id, movie.title)">
+    date_range
+  </i>
 </app-movie-item>

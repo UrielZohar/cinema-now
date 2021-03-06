@@ -3,13 +3,13 @@ var axios = require('axios');
 var DAL = require('../DAL/DAL');
 
 var router = express.Router();
-const Movie = DAL.getMovieModel();
+const Show = DAL.getShowModel();
 
 /* GET users listing. */
 router.post('/save', (req, res) => {
-  const { movie } = req.body;
-  const newLocalMovie = new Movie(movie);
-  newLocalMovie.save((error) => {
+  const { show } = req.body;
+  const newShow = new Show(show);
+  newShow.save((error) => {
     if (error) {
       res.status(500).send('Something broke');
     } else {
@@ -19,20 +19,20 @@ router.post('/save', (req, res) => {
 });
 
 /* GET all local movies ids in map  */ 
-router.get('/movies/map', (req, res, next) => {
-  Movie.find({}).exec().then((allLocalMovies) => {
+router.get('/map', (req, res, next) => {
+  Show.find({}).exec().then((allShows) => {
     var objectMap = {};
-    allLocalMovies.forEach(item => {
-      objectMap[item.id] = item;
+    allShows.forEach(item => {
+      objectMap[item.id] = true;
     });
     res.send(objectMap);
   }, () => res.status(500).send('Something broke') )
 });
 
 /* GET all local movies */ 
-router.get('/movies', (req, res, next) => {
-  Movie.find({}).exec().then((allLocalMovies) => {
-    res.send(allLocalMovies);
+router.get('/', (req, res, next) => {
+  Show.find({}).exec().then((allShows) => {
+    res.send(allShows);
   }, () => res.status(500).send('Something broke') )
 });
 

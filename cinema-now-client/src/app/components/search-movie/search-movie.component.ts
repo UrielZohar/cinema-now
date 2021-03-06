@@ -94,11 +94,11 @@ export class SearchMovieComponent implements OnInit, AfterViewInit, OnDestroy {
         isSavedInLocal: true
       }
       this.snackBar.open("Succeeded", "Saved Locally", {
-        duration: 800,
+        duration: 4000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
-      this.localMoviesService.addToLocalMoviesMap(id);
+      this.localMoviesService.addToLocalMoviesMap(this.movies[idx]);
     }
   }
 

@@ -6,7 +6,7 @@ const hallSchema = new mongoose.Schema({
 });
 // create mongoose model
 const Halls = mongoose.model('Halls', hallSchema);
-
+///////////////////////////////
 
 const movieSchema = new mongoose.Schema({
   id: String,
@@ -17,6 +17,17 @@ const movieSchema = new mongoose.Schema({
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
+///////////////////////////////
+
+const showSchema = new mongoose.Schema({
+  movieId: String,
+  date: String,
+  timeId: String,
+  hallId: String
+});
+
+const Show = mongoose.model('Show', showSchema);
+
 
 
 class DBActions {
@@ -30,6 +41,10 @@ class DBActions {
   
   static getMovieModel() {
     return Movie;
+  }
+
+  static getShowModel() {
+    return Show;
   }
 }
 module.exports = DBActions;
