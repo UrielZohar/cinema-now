@@ -4,6 +4,7 @@ var DAL = require('../DAL/DAL');
 
 var router = express.Router();
 const Movie = DAL.getMovieModel();
+const Show = DAL.getShowModel();
 
 /* GET users listing. */
 router.post('/save', (req, res) => {
@@ -39,8 +40,11 @@ router.get('/movies', (req, res, next) => {
 /* GET delete */
 router.get('/:id/delete', (req, res) => {
   const { id } = req.params;
-  Movie.deleteOne({ id }).then((result) => {
-    if (result.deletedCount) {
+  Promise.all([
+    Show.deleteMany({ movieId: id }),
+    Movie.deleteOne({ id })
+  ]).then((resultArr) => {
+    if (resultArr[1].deletedCount) {
       res.send("deleted");
     } else {
       res.status(500).send('Something broke');
