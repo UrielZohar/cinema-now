@@ -8,7 +8,7 @@ Docker-compose should be version 1.6 or higher.
 
 ### Clone the repo
 ```bash
-$ git clone XXXXXXXXX
+$ git clone https://github.com/UrielZohar/cinema-now.git
 ```
  ### Run docker
  ```bash

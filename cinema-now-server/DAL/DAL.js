@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mean-docker', { 
+mongoose.connect('mongodb://database/mean-docker', { 
   useNewUrlParser: true ,
   useFindAndModify: false,
 });

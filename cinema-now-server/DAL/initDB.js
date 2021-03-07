@@ -3,7 +3,7 @@ const mongoose = DAL.getConnection();
 
 
 const initDB = () => {
-  mongoose.connect('mongodb://localhost:27017/mean-docker', { useNewUrlParser: true })
+  mongoose.connect('mongodb://database/mean-docker', { useNewUrlParser: true })
   .then(res => {
     console.log('Connection succeeded');
     // create mongoose model
