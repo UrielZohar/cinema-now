@@ -1,7 +1,7 @@
 <h1
   class="dialog-title"
   mat-dialog-title>
-  Schedule show - "{{data.movieTitle}}"
+  Schedule show - "{{movieTitle}}"
 </h1>
 <div mat-dialog-content
   class="dialog-content">
@@ -57,7 +57,6 @@
   <button 
     class="dialog-button"
     mat-button 
-    [mat-dialog-close]="" 
     cdkFocusInitial
     (click)="schedleShow()">
     Save

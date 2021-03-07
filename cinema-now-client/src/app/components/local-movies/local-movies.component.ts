@@ -63,7 +63,7 @@ export class LocalMoviesComponent implements OnInit {
         return item.id != id;
       });
       this.snackBar.open("Succeeded", "Local movie deleted", {
-        duration: 800,
+        duration: 4000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });

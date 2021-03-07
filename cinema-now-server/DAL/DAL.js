@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mean-docker', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/mean-docker', { 
+  useNewUrlParser: true ,
+  useFindAndModify: false,
+});
 
 const hallSchema = new mongoose.Schema({
   name: String

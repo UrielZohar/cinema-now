@@ -82,4 +82,8 @@ export class HttpService {
   getShows() {
     return this.httpRequest(APIManager.getShows(), "GET", true);  
   }
+
+  deleteShow(showId: string) {
+    return this.httpRequest(APIManager.deleteShow(showId), "GET", true);  
+  }
 }

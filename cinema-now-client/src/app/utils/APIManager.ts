@@ -34,6 +34,10 @@ class APIManager {
       return `${APIManager.ROOT}/shows`;
     }
 
+    static deleteShow(showId: string) {
+      return `${APIManager.ROOT}/shows/${showId}/delete`;
+    }
+
   }
   
   export default APIManager;

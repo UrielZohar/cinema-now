@@ -1,32 +1,40 @@
 var express = require('express');
-var axios = require('axios');
 var DAL = require('../DAL/DAL');
 
 var router = express.Router();
 const Show = DAL.getShowModel();
+const ObjectId = require('mongoose').Types.ObjectId; 
 
-/* GET users listing. */
+
+/* POST save/update show */
 router.post('/save', (req, res) => {
   const { show } = req.body;
-  const newShow = new Show(show);
-  newShow.save((error) => {
-    if (error) {
-      res.status(500).send('Something broke');
-    } else {
-      res.send("saved");
-    }
-  })
-});
-
-/* GET all local movies ids in map  */ 
-router.get('/map', (req, res, next) => {
-  Show.find({}).exec().then((allShows) => {
-    var objectMap = {};
-    allShows.forEach(item => {
-      objectMap[item.id] = true;
+  let newShow;
+  if (!show._id) {
+    newShow = new Show(show);
+  }
+  if (show._id) {
+    Show.findOneAndUpdate(
+      {_id: ObjectId(show._id)}, 
+      show,
+      {new: true})
+      .then((result) => {
+        if (result) {
+          res.send(show);
+        }
+      })
+      .catch(err => {
+        res.status(500).send('Something broke');
+      });
+  } else {
+    newShow.save((error) => {
+      if (error) {
+        res.status(500).send('Something broke');
+      } else {
+        res.send("saved");
+      }
     });
-    res.send(objectMap);
-  }, () => res.status(500).send('Something broke') )
+  }
 });
 
 /* GET all local movies */ 
@@ -39,7 +47,7 @@ router.get('/', (req, res, next) => {
 /* GET delete */
 router.get('/:id/delete', (req, res) => {
   const { id } = req.params;
-  Movie.deleteOne({ id }).then((result) => {
+  Show.deleteOne({ _id: new ObjectId(id) }).then((result) => {
     if (result.deletedCount) {
       res.send("deleted");
     } else {

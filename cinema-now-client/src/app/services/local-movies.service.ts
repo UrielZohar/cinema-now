@@ -11,17 +11,19 @@ export class LocalMoviesService {
   isReady: boolean = false;
   localMoviesMap: {[key: string]: Movie} = {};
   constructor(private httpService: HttpService) {
-    Promise.all([this.getLocalMoviesMap()])
-    .then(() => {
-      this.isReady = true;
+    this.getLocalMoviesMap()
+    .then((res) => {
+      if (!!res) {
+        this.isReady = true;
+      }
     });
   }
 
-  async getLocalMoviesMap () {
+  async getLocalMoviesMap (): Promise<any> {
     const localMoviesMap = await this.httpService.getLocalMoviesMap();
     if (localMoviesMap) {
       this.localMoviesMap = localMoviesMap;
-      return Promise.resolve();
+      return Promise.resolve(localMoviesMap);
     }
     return Promise.reject();
   }

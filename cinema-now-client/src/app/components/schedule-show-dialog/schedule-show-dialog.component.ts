@@ -6,12 +6,16 @@ import {
 } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { LocalMoviesService } from '../../services/local-movies.service';
+
 
 export interface DialogData {
   movieTitle: string;
   movieId: string;
+  hallId: string;
   date: string;
-  time: string;
+  timeId: string;
+  _id?: string
 }
 
 export interface ShowTime {
@@ -34,16 +38,23 @@ export interface ShowHall {
 export class ScheduleShowDialogComponent {
 
   isCheckingForTimes: boolean = false;
+  showId?: string; 
   showDate?: Date; 
   showTimeId?: string; 
   showTimeOptions: ShowTime[];
   showHallOptions: ShowTime[];
   hallId?: string;
+  movieTitle: string;
   constructor(
     public dialogRef: MatDialogRef<ScheduleShowDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private httpService: HttpService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private localMoviesService: LocalMoviesService) {
+    this.hallId = data.hallId;
+    this.showTimeId = data.timeId;
+    this.showDate = new Date(+data.date);
+    this.movieTitle = this.localMoviesService.getMovieName(data.movieId);
 
     this.showTimeOptions = [
       {
@@ -78,16 +89,17 @@ export class ScheduleShowDialogComponent {
     this.dialogRef.close();
   }
   onDateChange(eventType: any, newDate: any) {
-    console.log('newDate: ', newDate);
+    // TODO: check which times are avaiable for this date
   }
 
   async schedleShow() {
-    const showDateTimestamp = (+<Date>this.showDate).toString()
+    const showDateTimestamp = (+<Date>this.showDate).toString();
     const res = await this.httpService.scheduleShow({
       movieId: this.data.movieId,
       timeId: <string>(this.showTimeId),
       date: showDateTimestamp,
-      hallId: <string>this.hallId
+      hallId: <string>this.hallId,
+      _id: this.data._id
     });
     if (res) {
       this.snackBar.open("Succeeded", "Show Saved", {
@@ -95,6 +107,7 @@ export class ScheduleShowDialogComponent {
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
+      this.dialogRef.close({...res});
     }
   }
 
