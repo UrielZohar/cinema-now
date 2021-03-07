@@ -93,6 +93,9 @@ export class ScheduleShowDialogComponent {
   }
 
   async schedleShow() {
+    if (!this.hallId || !this.showDate || !this.showTimeId) {
+      return;
+    }
     const showDateTimestamp = (+<Date>this.showDate).toString();
     const res = await this.httpService.scheduleShow({
       movieId: this.data.movieId,

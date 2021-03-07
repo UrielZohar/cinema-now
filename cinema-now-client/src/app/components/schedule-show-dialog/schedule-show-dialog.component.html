@@ -5,11 +5,12 @@
 </h1>
 <div mat-dialog-content
   class="dialog-content">
-  <mat-form-field 
+  <mat-form-field
     appearance="fill"
     class="dialog-field">
     <mat-label>Hall</mat-label>
     <mat-select
+      required
       [(ngModel)]="hallId">
       <mat-option *ngFor="let hall of showHallOptions" [value]="hall.value">
         {{hall.viewValue}}
@@ -19,21 +20,22 @@
   <mat-form-field
     class="dialog-field">
     <mat-label>Date</mat-label>
-    <input 
+    <input
+      required 
       matInput 
       [matDatepicker]="picker"
       [(ngModel)]="showDate"
       (dateInput)="onDateChange('input', $event)"
       (dateChange)="onDateChange('change', $event)"
     >
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker-toggle matSuffix [for]="picker" required></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field 
     appearance="fill"
     class="dialog-field">
     <mat-label>Time</mat-label>
-    <mat-select [(ngModel)]="showTimeId">
+    <mat-select [(ngModel)]="showTimeId" required>
       <mat-option *ngFor="let showTime of showTimeOptions" [value]="showTime.value">
         {{showTime.viewValue}}
       </mat-option>
@@ -58,7 +60,8 @@
     class="dialog-button"
     mat-button 
     cdkFocusInitial
-    (click)="schedleShow()">
+    (click)="schedleShow()"
+    [disabled]="!hallId || !showDate || !showTimeId">
     Save
   </button>
 </div>
