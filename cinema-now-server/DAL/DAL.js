@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://database/mean-docker', { 
+const uri = "mongodb+srv://uriel-cinema-now:cinemaTRY2025@cinema-now.mdegl.mongodb.net/mean-docker?retryWrites=true&w=majority";
+mongoose.connect(uri, { 
   useNewUrlParser: true ,
   useFindAndModify: false,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connection succeeded ')
+}, (err) => console.error('Connection failed ', err))
+.catch((err) => {
+  console.error('Connection failed ', err)
 });
 
 const hallSchema = new mongoose.Schema({

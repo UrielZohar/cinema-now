@@ -1,15 +1,17 @@
 const DAL = require('./DAL');
+const uri = "mongodb+srv://uriel-cinema-now:cinemaTRY2025@cinema-now.mdegl.mongodb.net/mean-docker?retryWrites=true&w=majority";
+
 const mongoose = DAL.getConnection();
 
 
 const initDB = () => {
-  mongoose.connect('mongodb://database/mean-docker', { useNewUrlParser: true })
+  mongoose.connect(uri, { useNewUrlParser: true })
   .then(res => {
     console.log('Connection succeeded');
     // create mongoose model
     const Halls = DAL.getHallsModel();
     //
-    Halls.find().exec().then((halls) => {
+    Halls.find({}).exec().then((halls) => {
       if (halls.length == 0) {
         Halls.insertMany([{
           name: "Hall 100"
