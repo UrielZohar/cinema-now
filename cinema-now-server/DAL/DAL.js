@@ -1,5 +1,8 @@
+require('dotenv').config();
+const { DB_USER } = process.env; 
+const { DB_PASSWORD } = process.env; 
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://uriel-cinema-now:cinemaTRY2025@cinema-now.mdegl.mongodb.net/mean-docker?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cinema-now.mdegl.mongodb.net/mean-docker?retryWrites=true&w=majority`;
 mongoose.connect(uri, { 
   useNewUrlParser: true ,
   useFindAndModify: false,
