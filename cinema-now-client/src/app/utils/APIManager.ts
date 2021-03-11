@@ -1,6 +1,6 @@
 
 class APIManager {
-    static ROOT = '';
+    static ROOT = '/api';
 
     static searchMoviesByTitle(title: string, pageNumber = 1) {
       return `${APIManager.ROOT}/movies?title=${title}&page=${pageNumber}`;
