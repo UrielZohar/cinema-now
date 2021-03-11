@@ -5,11 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 
-// static files
-app.use(express.static(path.join(__dirname, 'dist', 'cinema-now-client')));
-
-
-
 var indexRouter = require('./routes/index');
 var moviesRouter = require('./routes/movies');
 var localRouter = require('./routes/local');
@@ -44,6 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist', 'cinema-now-client')));
 
 app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
