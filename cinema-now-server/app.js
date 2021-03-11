@@ -41,11 +41,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist', 'cinema-now-client')));
 
+app.use('/api/movies', moviesRouter);
+app.use('/api/local', localRouter);
+app.use('/api/halls', hallsRouter);
+app.use('/api/shows', showsRouter);
 app.use('/', indexRouter);
-app.use('/movies', moviesRouter);
-app.use('/local', localRouter);
-app.use('/halls', hallsRouter);
-app.use('/shows', showsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
