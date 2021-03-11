@@ -1,0 +1,9 @@
+{
+  "name": "cinema-now",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "heroku-prebuild": "cd cinema-now-server && npm install",
+    "start": "cd cinema-now-server && npm start"
+  }
+}
