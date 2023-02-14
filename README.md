@@ -1,5 +1,4 @@
-# Live Demo 
-https://cinema-now.herokuapp.com/
+
 
 ## MEAN Docker
 App to show a Docker Compose set up for a mean application running Angular 2.
